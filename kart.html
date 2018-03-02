@@ -1,0 +1,74 @@
+﻿
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+
+
+      <link rel="stylesheet" type="text/css" href="css/oblig1.css">
+      <script type="text/javascript" src="js/google.js"></script>
+      <script type="text/javascript" src="js/demo1.js"></script>
+      <script type="text/javascript" src="toalett.json"></script>
+
+
+    <title>Kart over Bergen
+    </title>
+  </head>
+<body>
+
+        <div class="navi" id="navig">
+          <button class="meny"> Navigering</button>
+          <button class="meny2">
+          <a id="cc" onmouseover="document.getElementById('cc').style.fontSize='18px'" onmouseout =
+          "document.getElementById('cc').style.fontSize='14px'" href="forside.html"> Forsiden</a>
+          <a id="bb" onmouseover="document.getElementById('bb').style.fontSize='18px'" onmouseout =
+          "document.getElementById('bb').style.fontSize='14px'"
+          href= "kart.html"> Kart over steder vi anbefaler</a>
+
+          <a id="aa" onmouseover="document.getElementById('aa').style.fontSize='18px'" onmouseout =
+          "document.getElementById('aa').style.fontSize='14px'" href="bergen.html"> Om Bergen</a>
+        </button>
+      </div>
+
+
+<br>
+<br>
+<br>
+<br>
+<script>
+
+
+$(function() {
+
+
+   var people = [];
+
+   $.getJSON('toalett.json', function(data) {
+       $.each(data.person, function(i, f) {
+          var tblRow = "<tr>" + "<td>" + f.firstName + "</td>" +
+           "<td>" + f.lastName + "</td>" + "<td>" + f.job + "</td>" + "<td>" + f.roll + "</td>" + "</tr>"
+           $(tblRow).appendTo("#userdata tbody");
+     });
+
+   });
+
+});
+
+</script>
+<br>
+<br>
+<br>
+<br>
+
+
+<p id= "toaletter" style="font-family:courier;"> Bilde:</p>
+
+
+<h5> Her har vi trukket frem noen viktige turist steder som en bør få med seg </h5>
+    <div id="map"></div>
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB-w6kTpH22gWRj04d6X4nDqD_RSTUEg7Y&callback=initMap">
+    </script>
+
+  </body>
+</html>
